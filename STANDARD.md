@@ -228,7 +228,68 @@ jobs:
 
 ---
 
-## 九、.gitignore 标准
+## 九、封面 Feature Icon 规范
+
+VitePress 首页（`index.md`）的 features 区域必须使用自定义 SVG，**禁止使用 emoji**。
+
+### 9.1 为什么不用 emoji
+
+- Emoji 在不同操作系统/浏览器渲染差异大，外观不可控
+- 无法与书的品牌色联动（SVG 可以直接使用 `fill` 颜色）
+- 在暗色模式下对比度差，影响可读性
+
+### 9.2 Icon 格式要求
+
+- 格式：SVG，存放在 `public/icons/` 目录
+- 尺寸：`viewBox="0 0 48 48"` 统一规格
+- 颜色：使用书的主题色（与 `config.ts` 中的 `--vp-c-brand` 一致）
+- 风格：简洁线条/填充混合，语义清晰（不要纯抽象图形）
+- 数量：通常 4 个 feature 对应 4 个 icon
+
+### 9.3 index.md 写法
+
+```yaml
+features:
+  - icon:
+      src: /icons/overview.svg     # ✅ 自定义 SVG
+    title: 架构概览
+    details: 项目定位、整体设计...
+
+  # ❌ 禁止这样写
+  - icon: 🚀
+    title: 高性能
+```
+
+### 9.4 Icon 设计参考
+
+每个分类的常用图形语义：
+
+| 场景 | 推荐图形 |
+|------|---------|
+| 架构/宏观 | 矩形连线图、层次方块 |
+| 调度/批处理 | 横向堆叠矩形 |
+| 内存/缓存 | 带引脚的矩形、环形 |
+| 编译/优化 | 六边形 + 齿轮 |
+| 分布式 | 多节点连线图 |
+| 性能/速度 | 折线图、闪电 |
+| API/接口 | 代码框 + 勾选 |
+| 模型定义 | 多层矩形堆叠 |
+| 训练/微调 | 下降曲线 + 刻度 |
+| 向量/嵌入 | 坐标轴 + 点集 |
+
+### 9.5 SVG 模板
+
+```xml
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
+  <!-- 用书的主题色，如 #0ea5e9 -->
+  <rect x="8" y="8" width="32" height="32" rx="4" stroke="#0ea5e9" stroke-width="2"/>
+  <circle cx="24" cy="24" r="6" fill="#0ea5e9"/>
+</svg>
+```
+
+---
+
+## 十、.gitignore 标准
 
 ```
 .DS_Store
@@ -241,7 +302,7 @@ node_modules/
 
 ---
 
-## 十、完整发布流程
+## 十一、完整发布流程
 
 1. **创建目录结构**（参考第三节）
 2. **写内容**（用 Claude Code agent 生成，参考 prompt 模板）
@@ -297,7 +358,7 @@ node_modules/
 
 ---
 
-## 十一、Agent Prompt 模板
+## 十二、Agent Prompt 模板
 
 生成新书时，Claude Code agent 的 prompt 参考以下结构：
 
@@ -322,7 +383,7 @@ CNAME：{name}-book.myhubs.dev
 
 ---
 
-## 十二、当前书库
+## 十三、当前书库
 
 ### 应用框架与工具链
 | 书名 | 域名 | Repo | Stars |
