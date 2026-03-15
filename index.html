@@ -95,7 +95,6 @@
       width: 36px; height: 36px;
       border-radius: 10px;
       display: flex; align-items: center; justify-content: center;
-      font-size: 18px;
       flex-shrink: 0;
     }
     .section-icon img { width: 20px; height: 20px; }
@@ -149,10 +148,14 @@
     .card-logo {
       width: 44px; height: 44px;
       border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 22px;
+      overflow: hidden;
       flex-shrink: 0;
-      background: var(--accent-bg);
+      background: var(--bg3);
+    }
+    .card-logo img {
+      width: 44px; height: 44px;
+      display: block;
+      object-fit: cover;
     }
     .card-tag {
       font-size: 11px;
@@ -184,9 +187,21 @@
       margin-top: auto;
     }
     .card-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
       font-size: 12px;
       color: var(--muted);
     }
+    .card-stars {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      font-size: 12px;
+      color: #f59e0b;
+      font-weight: 500;
+    }
+    .card-stars svg { opacity: 0.9; }
     .card-arrow {
       color: var(--accent);
       font-size: 16px;
@@ -235,10 +250,88 @@
 
 <main>
 
-  <!-- ── Section 1: Agent 编排框架 ── -->
+  <!-- ── Section 1: 应用框架与工具链（置顶） ── -->
   <section class="section">
     <div class="section-header">
-      <div class="section-icon" style="background:rgba(99,102,241,0.15)"><img src="/public/icons/section-agent.svg" width="20" height="20"/></div>
+      <div class="section-icon" style="background:rgba(139,92,246,0.15)">
+        <img src="/public/icons/section-tools.svg" width="20" height="20"/>
+      </div>
+      <div>
+        <div class="section-title">应用框架与工具链</div>
+      </div>
+      <div class="section-desc">AI 应用落地与开发效率工具</div>
+    </div>
+    <div class="grid">
+
+      <a class="card" href="https://openclaw-book.myhubs.dev" target="_blank"
+         style="--accent:#06b6d4;--accent-bg:rgba(6,182,212,0.1);--accent-border:rgba(6,182,212,0.3)">
+        <div class="card-top">
+          <div class="card-logo"><img src="https://github.com/openclaw.png?size=64" alt="OpenClaw"/></div>
+          <span class="card-tag">AI Runtime</span>
+        </div>
+        <div class="card-name">OpenClaw 源码解析</div>
+        <div class="card-sub">AI 个人助手 Runtime 深度剖析。解读消息管道、技能系统、多渠道路由与 Agent 编排机制。</div>
+        <div class="card-footer">
+          <div class="card-meta">
+            <span class="card-stars">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="#f59e0b"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              314.6k
+            </span>
+            <span>26 章 + 3 附录</span>
+          </div>
+          <span class="card-arrow">→</span>
+        </div>
+      </a>
+
+      <a class="card" href="https://deerflow-book.myhubs.dev" target="_blank"
+         style="--accent:#8b5cf6;--accent-bg:rgba(139,92,246,0.1);--accent-border:rgba(139,92,246,0.3)">
+        <div class="card-top">
+          <div class="card-logo"><img src="https://github.com/bytedance.png?size=64" alt="DeerFlow"/></div>
+          <span class="card-tag">Super Agent</span>
+        </div>
+        <div class="card-name">DeerFlow 源码解析</div>
+        <div class="card-sub">字节跳动开源 Super Agent Harness。解析 Research Pipeline、工具编排与多步推理架构。</div>
+        <div class="card-footer">
+          <div class="card-meta">
+            <span class="card-stars">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="#f59e0b"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              30.8k
+            </span>
+            <span>章节丰富</span>
+          </div>
+          <span class="card-arrow">→</span>
+        </div>
+      </a>
+
+      <a class="card" href="https://opencode-book.myhubs.dev" target="_blank"
+         style="--accent:#0ea5e9;--accent-bg:rgba(14,165,233,0.1);--accent-border:rgba(14,165,233,0.3)">
+        <div class="card-top">
+          <div class="card-logo"><img src="https://github.com/sst.png?size=64" alt="OpenCode"/></div>
+          <span class="card-tag">AI 编程助手</span>
+        </div>
+        <div class="card-name">OpenCode 源码解析</div>
+        <div class="card-sub">开源 AI 编程助手深度解析。剖析 LSP 集成、上下文构建、工具调用与 TUI 交互架构。</div>
+        <div class="card-footer">
+          <div class="card-meta">
+            <span class="card-stars">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="#f59e0b"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              122.6k
+            </span>
+            <span>章节丰富</span>
+          </div>
+          <span class="card-arrow">→</span>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ── Section 2: Agent 编排框架 ── -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background:rgba(99,102,241,0.15)">
+        <img src="/public/icons/section-agent.svg" width="20" height="20"/>
+      </div>
       <div>
         <div class="section-title">Agent 编排框架</div>
       </div>
@@ -249,13 +342,19 @@
       <a class="card" href="https://langgraph-book.myhubs.dev" target="_blank"
          style="--accent:#38b2ac;--accent-bg:rgba(56,178,172,0.1);--accent-border:rgba(56,178,172,0.3)">
         <div class="card-top">
-          <div class="card-logo"><img src="/public/icons/langgraph.svg" width="28" height="28" alt="LangGraph"/></div>
+          <div class="card-logo"><img src="https://github.com/langchain-ai.png?size=64" alt="LangGraph"/></div>
           <span class="card-tag">状态机 / 图</span>
         </div>
         <div class="card-name">LangGraph 源码解析</div>
         <div class="card-sub">基于 Pregel 模型的 AI Agent 状态机框架。深入 StateGraph、Channel、Checkpoint 与执行引擎。</div>
         <div class="card-footer">
-          <span class="card-meta">18 章 + 3 附录</span>
+          <div class="card-meta">
+            <span class="card-stars">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="#f59e0b"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              26.4k
+            </span>
+            <span>18 章 + 3 附录</span>
+          </div>
           <span class="card-arrow">→</span>
         </div>
       </a>
@@ -263,13 +362,19 @@
       <a class="card" href="https://crewai-book.myhubs.dev" target="_blank"
          style="--accent:#f59e0b;--accent-bg:rgba(245,158,11,0.1);--accent-border:rgba(245,158,11,0.3)">
         <div class="card-top">
-          <div class="card-logo"><img src="/public/icons/crewai.svg" width="28" height="28" alt="CrewAI"/></div>
+          <div class="card-logo"><img src="https://github.com/crewAIInc.png?size=64" alt="CrewAI"/></div>
           <span class="card-tag">角色 / 任务</span>
         </div>
         <div class="card-name">CrewAI 源码解析</div>
         <div class="card-sub">多 Agent 协作编排框架。解析 Crew、Agent、Task、Flow 四大核心抽象与执行管线。</div>
         <div class="card-footer">
-          <span class="card-meta">22 章 + 3 附录</span>
+          <div class="card-meta">
+            <span class="card-stars">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="#f59e0b"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              46.1k
+            </span>
+            <span>22 章 + 3 附录</span>
+          </div>
           <span class="card-arrow">→</span>
         </div>
       </a>
@@ -277,13 +382,19 @@
       <a class="card" href="https://autogen-book.myhubs.dev" target="_blank"
          style="--accent:#6366f1;--accent-bg:rgba(99,102,241,0.1);--accent-border:rgba(99,102,241,0.3)">
         <div class="card-top">
-          <div class="card-logo"><img src="/public/icons/ag2.svg" width="28" height="28" alt="AG2"/></div>
+          <div class="card-logo"><img src="https://github.com/ag2ai.png?size=64" alt="AG2"/></div>
           <span class="card-tag">对话 / 分布式</span>
         </div>
         <div class="card-name">AG2 源码解析</div>
         <div class="card-sub">微软 AutoGen 开源社区版。剖析 ConversableAgent、GroupChat、嵌套对话与 Actor 模型。</div>
         <div class="card-footer">
-          <span class="card-meta">20 章 + 3 附录</span>
+          <div class="card-meta">
+            <span class="card-stars">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="#f59e0b"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              4.3k
+            </span>
+            <span>20 章 + 3 附录</span>
+          </div>
           <span class="card-arrow">→</span>
         </div>
       </a>
@@ -291,13 +402,19 @@
       <a class="card" href="https://pydantic-ai-book.myhubs.dev" target="_blank"
          style="--accent:#e92063;--accent-bg:rgba(233,32,99,0.1);--accent-border:rgba(233,32,99,0.3)">
         <div class="card-top">
-          <div class="card-logo"><img src="/public/icons/pydantic-ai.svg" width="28" height="28" alt="Pydantic AI"/></div>
+          <div class="card-logo"><img src="https://github.com/pydantic.png?size=64" alt="Pydantic AI"/></div>
           <span class="card-tag">类型安全 / MCP</span>
         </div>
         <div class="card-name">Pydantic AI 源码解析</div>
         <div class="card-sub">类型安全的 Python Agent 框架。解读 Agent、Deps 注入、Tool 系统与 MCP 客户端集成。</div>
         <div class="card-footer">
-          <span class="card-meta">18 章 + 3 附录</span>
+          <div class="card-meta">
+            <span class="card-stars">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="#f59e0b"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              15.5k
+            </span>
+            <span>18 章 + 3 附录</span>
+          </div>
           <span class="card-arrow">→</span>
         </div>
       </a>
@@ -305,10 +422,12 @@
     </div>
   </section>
 
-  <!-- ── Section 2: 记忆与向量数据层 ── -->
+  <!-- ── Section 3: 记忆与向量数据层 ── -->
   <section class="section">
     <div class="section-header">
-      <div class="section-icon" style="background:rgba(16,185,129,0.15)"><img src="/public/icons/section-memory.svg" width="20" height="20"/></div>
+      <div class="section-icon" style="background:rgba(16,185,129,0.15)">
+        <img src="/public/icons/section-memory.svg" width="20" height="20"/>
+      </div>
       <div>
         <div class="section-title">记忆与向量数据层</div>
       </div>
@@ -319,13 +438,19 @@
       <a class="card" href="https://mem0-book.myhubs.dev" target="_blank"
          style="--accent:#10b981;--accent-bg:rgba(16,185,129,0.1);--accent-border:rgba(16,185,129,0.3)">
         <div class="card-top">
-          <div class="card-logo"><img src="/public/icons/mem0.svg" width="28" height="28" alt="Mem0"/></div>
+          <div class="card-logo"><img src="https://github.com/mem0ai.png?size=64" alt="Mem0"/></div>
           <span class="card-tag">记忆 / RAG</span>
         </div>
         <div class="card-name">Mem0 源码解析</div>
         <div class="card-sub">AI Agent 智能记忆层。深入 Memory 提取、向量检索、图存储与跨会话记忆管理机制。</div>
         <div class="card-footer">
-          <span class="card-meta">章节丰富</span>
+          <div class="card-meta">
+            <span class="card-stars">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="#f59e0b"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              49.9k
+            </span>
+            <span>章节丰富</span>
+          </div>
           <span class="card-arrow">→</span>
         </div>
       </a>
@@ -333,13 +458,19 @@
       <a class="card" href="https://chroma-book.myhubs.dev" target="_blank"
          style="--accent:#f97316;--accent-bg:rgba(249,115,22,0.1);--accent-border:rgba(249,115,22,0.3)">
         <div class="card-top">
-          <div class="card-logo"><img src="/public/icons/chroma.svg" width="28" height="28" alt="Chroma"/></div>
+          <div class="card-logo"><img src="https://github.com/chroma-core.png?size=64" alt="Chroma"/></div>
           <span class="card-tag">向量库 / Python</span>
         </div>
         <div class="card-name">Chroma 源码解析</div>
         <div class="card-sub">面向 AI 应用的开源向量数据库。剖析 Collection、HNSW 索引、EmbeddingFunction 与 Segment 架构。</div>
         <div class="card-footer">
-          <span class="card-meta">18 章 + 3 附录</span>
+          <div class="card-meta">
+            <span class="card-stars">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="#f59e0b"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              26.6k
+            </span>
+            <span>18 章 + 3 附录</span>
+          </div>
           <span class="card-arrow">→</span>
         </div>
       </a>
@@ -347,69 +478,19 @@
       <a class="card" href="https://qdrant-book.myhubs.dev" target="_blank"
          style="--accent:#dc244c;--accent-bg:rgba(220,36,76,0.1);--accent-border:rgba(220,36,76,0.3)">
         <div class="card-top">
-          <div class="card-logo"><img src="/public/icons/qdrant.svg" width="28" height="28" alt="Qdrant"/></div>
+          <div class="card-logo"><img src="https://github.com/qdrant.png?size=64" alt="Qdrant"/></div>
           <span class="card-tag">向量库 / Rust</span>
         </div>
         <div class="card-name">Qdrant 源码解析</div>
         <div class="card-sub">Rust 构建的高性能向量搜索引擎。解析 HNSW、量化压缩、Raft 共识与分布式分片架构。</div>
         <div class="card-footer">
-          <span class="card-meta">20 章 + 3 附录</span>
-          <span class="card-arrow">→</span>
-        </div>
-      </a>
-
-    </div>
-  </section>
-
-  <!-- ── Section 3: 应用框架与工具链 ── -->
-  <section class="section">
-    <div class="section-header">
-      <div class="section-icon" style="background:rgba(139,92,246,0.15)"><img src="/public/icons/section-tools.svg" width="20" height="20"/></div>
-      <div>
-        <div class="section-title">应用框架与工具链</div>
-      </div>
-      <div class="section-desc">AI 应用落地与开发效率工具</div>
-    </div>
-    <div class="grid">
-
-      <a class="card" href="https://deerflow-book.myhubs.dev" target="_blank"
-         style="--accent:#8b5cf6;--accent-bg:rgba(139,92,246,0.1);--accent-border:rgba(139,92,246,0.3)">
-        <div class="card-top">
-          <div class="card-logo"><img src="/public/icons/deerflow.svg" width="28" height="28" alt="DeerFlow"/></div>
-          <span class="card-tag">Super Agent</span>
-        </div>
-        <div class="card-name">DeerFlow 源码解析</div>
-        <div class="card-sub">字节跳动开源 Super Agent Harness。解析 Research Pipeline、工具编排与多步推理架构。</div>
-        <div class="card-footer">
-          <span class="card-meta">章节丰富</span>
-          <span class="card-arrow">→</span>
-        </div>
-      </a>
-
-      <a class="card" href="https://opencode-book.myhubs.dev" target="_blank"
-         style="--accent:#0ea5e9;--accent-bg:rgba(14,165,233,0.1);--accent-border:rgba(14,165,233,0.3)">
-        <div class="card-top">
-          <div class="card-logo"><img src="/public/icons/opencode.svg" width="28" height="28" alt="OpenCode"/></div>
-          <span class="card-tag">AI 编程助手</span>
-        </div>
-        <div class="card-name">OpenCode 源码解析</div>
-        <div class="card-sub">开源 AI 编程助手深度解析。剖析 LSP 集成、上下文构建、工具调用与 TUI 交互架构。</div>
-        <div class="card-footer">
-          <span class="card-meta">章节丰富</span>
-          <span class="card-arrow">→</span>
-        </div>
-      </a>
-
-      <a class="card" href="https://openclaw-book.myhubs.dev" target="_blank"
-         style="--accent:#06b6d4;--accent-bg:rgba(6,182,212,0.1);--accent-border:rgba(6,182,212,0.3)">
-        <div class="card-top">
-          <div class="card-logo"><img src="/public/icons/openclaw.svg" width="28" height="28" alt="OpenClaw"/></div>
-          <span class="card-tag">AI Runtime</span>
-        </div>
-        <div class="card-name">OpenClaw 源码解析</div>
-        <div class="card-sub">AI 个人助手 Runtime 深度剖析。解读消息管道、技能系统、多渠道路由与 Agent 编排机制。</div>
-        <div class="card-footer">
-          <span class="card-meta">26 章 + 3 附录</span>
+          <div class="card-meta">
+            <span class="card-stars">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="#f59e0b"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              29.6k
+            </span>
+            <span>20 章 + 3 附录</span>
+          </div>
           <span class="card-arrow">→</span>
         </div>
       </a>
