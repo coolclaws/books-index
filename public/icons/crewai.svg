@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <!-- Three people: crew -->
+  <!-- center person -->
+  <circle cx="16" cy="9" r="3.5" fill="#f59e0b"/>
+  <path d="M9.5 26c0-3.59 2.91-6.5 6.5-6.5s6.5 2.91 6.5 6.5" stroke="#f59e0b" stroke-width="2" stroke-linecap="round"/>
+  <!-- left person -->
+  <circle cx="7" cy="11" r="2.5" fill="#f59e0b" opacity="0.6"/>
+  <path d="M2 26c0-2.76 2.24-5 5-5" stroke="#f59e0b" stroke-width="1.8" stroke-linecap="round" opacity="0.6"/>
+  <!-- right person -->
+  <circle cx="25" cy="11" r="2.5" fill="#f59e0b" opacity="0.6"/>
+  <path d="M30 26c0-2.76-2.24-5-5-5" stroke="#f59e0b" stroke-width="1.8" stroke-linecap="round" opacity="0.6"/>
+</svg>

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <!-- Database cylinder -->
+  <ellipse cx="16" cy="9" rx="11" ry="4" fill="#f97316" opacity="0.3" stroke="#f97316" stroke-width="1.8"/>
+  <rect x="5" y="9" width="22" height="14" fill="#f97316" opacity="0.12"/>
+  <ellipse cx="16" cy="23" rx="11" ry="4" fill="#f97316" opacity="0.3" stroke="#f97316" stroke-width="1.8"/>
+  <line x1="5" y1="9" x2="5" y2="23" stroke="#f97316" stroke-width="1.8"/>
+  <line x1="27" y1="9" x2="27" y2="23" stroke="#f97316" stroke-width="1.8"/>
+  <!-- inner ring -->
+  <ellipse cx="16" cy="16" rx="11" ry="4" stroke="#f97316" stroke-width="1.2" stroke-dasharray="3 2" opacity="0.5"/>
+</svg>

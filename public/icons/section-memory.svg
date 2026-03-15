@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+  <!-- Stack of layers = data/memory -->
+  <ellipse cx="12" cy="18" rx="9" ry="3" fill="#10b981" opacity="0.3" stroke="#10b981" stroke-width="1.5"/>
+  <ellipse cx="12" cy="13" rx="9" ry="3" fill="#10b981" opacity="0.3" stroke="#10b981" stroke-width="1.5"/>
+  <ellipse cx="12" cy="8" rx="9" ry="3" fill="#10b981" opacity="0.5" stroke="#10b981" stroke-width="1.5"/>
+  <line x1="3" y1="8" x2="3" y2="18" stroke="#10b981" stroke-width="1.5"/>
+  <line x1="21" y1="8" x2="21" y2="18" stroke="#10b981" stroke-width="1.5"/>
+</svg>

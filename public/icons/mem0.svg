@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <!-- Brain outline with pulse -->
+  <path d="M16 5C12.5 5 9.5 7.5 9 11c-1.5.5-3 2-3 4s1 3.5 2.5 4c.5 3 3 5 5 5h5c2 0 4.5-2 5-5C25 18.5 26 17 26 15s-1.5-3.5-3-4c-.5-3.5-3.5-6-7-6z" stroke="#10b981" stroke-width="2" stroke-linejoin="round"/>
+  <!-- pulse line -->
+  <path d="M10 16h3l2-4 3 7 2-5 1 2h2" stroke="#10b981" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
