@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI 源码解析书库</title>
+  <meta name="description" content="深入剖析 AI 生态核心项目的源码解析系列电子书，覆盖 Agent 编排框架、向量数据库、记忆系统与开发工具链。" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0f1117;
+      --bg2: #161b27;
+      --bg3: #1e2535;
+      --border: rgba(255,255,255,0.07);
+      --text: #e2e8f0;
+      --muted: #7c8ca0;
+      --radius: 12px;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    /* ── Header ── */
+    header {
+      text-align: center;
+      padding: 72px 24px 48px;
+      position: relative;
+      overflow: hidden;
+    }
+    header::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(99,102,241,0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(99,102,241,0.4);
+      color: #a5b4fc;
+      font-size: 13px;
+      margin-bottom: 20px;
+      background: rgba(99,102,241,0.08);
+    }
+    h1 {
+      font-size: clamp(28px, 5vw, 48px);
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 16px;
+    }
+    h1 span { color: #818cf8; }
+    .subtitle {
+      color: var(--muted);
+      font-size: 16px;
+      max-width: 520px;
+      margin: 0 auto 12px;
+    }
+    .stats {
+      display: flex;
+      gap: 32px;
+      justify-content: center;
+      margin-top: 28px;
+      flex-wrap: wrap;
+    }
+    .stat { text-align: center; }
+    .stat-num { font-size: 28px; font-weight: 700; color: var(--text); }
+    .stat-label { font-size: 13px; color: var(--muted); }
+
+    /* ── Main ── */
+    main {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+
+    /* ── Section ── */
+    .section { margin-bottom: 56px; }
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    .section-icon {
+      width: 36px; height: 36px;
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+    .section-title { font-size: 20px; font-weight: 600; }
+    .section-desc { font-size: 14px; color: var(--muted); margin-left: auto; }
+
+    /* ── Card Grid ── */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
+    }
+
+    /* ── Card ── */
+    .card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+      text-decoration: none;
+      color: inherit;
+      position: relative;
+      overflow: hidden;
+    }
+    .card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--accent);
+      opacity: 0;
+      transition: opacity 0.18s ease;
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(255,255,255,0.14);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.3);
+    }
+    .card:hover::before { opacity: 1; }
+
+    .card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .card-logo {
+      width: 44px; height: 44px;
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px;
+      flex-shrink: 0;
+      background: var(--accent-bg);
+    }
+    .card-tag {
+      font-size: 11px;
+      padding: 3px 10px;
+      border-radius: 999px;
+      background: var(--accent-bg);
+      color: var(--accent);
+      border: 1px solid var(--accent-border);
+      white-space: nowrap;
+      align-self: flex-start;
+    }
+    .card-name {
+      font-size: 17px;
+      font-weight: 600;
+      line-height: 1.3;
+    }
+    .card-sub {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.5;
+      flex: 1;
+    }
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 8px;
+      border-top: 1px solid var(--border);
+      margin-top: auto;
+    }
+    .card-meta {
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .card-arrow {
+      color: var(--accent);
+      font-size: 16px;
+      transition: transform 0.15s;
+    }
+    .card:hover .card-arrow { transform: translateX(4px); }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      padding: 32px 24px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 14px;
+    }
+    footer a { color: #818cf8; text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 600px) {
+      .section-desc { display: none; }
+      .stats { gap: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="badge">📚 开源技术丛书</div>
+  <h1>AI <span>源码解析</span> 书库</h1>
+  <p class="subtitle">深入剖析 AI 生态核心项目，从 Agent 编排到向量存储，读懂每一行背后的设计哲学。</p>
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-num">10</div>
+      <div class="stat-label">本书</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">200+</div>
+      <div class="stat-label">章节</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">3</div>
+      <div class="stat-label">技术方向</div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- ── Section 1: Agent 编排框架 ── -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background:rgba(99,102,241,0.15)">🤖</div>
+      <div>
+        <div class="section-title">Agent 编排框架</div>
+      </div>
+      <div class="section-desc">Multi-Agent 协作与任务调度</div>
+    </div>
+    <div class="grid">
+
+      <a class="card" href="https://langgraph-book.myhubs.dev" target="_blank"
+         style="--accent:#38b2ac;--accent-bg:rgba(56,178,172,0.1);--accent-border:rgba(56,178,172,0.3)">
+        <div class="card-top">
+          <div class="card-logo">🕸️</div>
+          <span class="card-tag">状态机 / 图</span>
+        </div>
+        <div class="card-name">LangGraph 源码解析</div>
+        <div class="card-sub">基于 Pregel 模型的 AI Agent 状态机框架。深入 StateGraph、Channel、Checkpoint 与执行引擎。</div>
+        <div class="card-footer">
+          <span class="card-meta">18 章 + 3 附录</span>
+          <span class="card-arrow">→</span>
+        </div>
+      </a>
+
+      <a class="card" href="https://crewai-book.myhubs.dev" target="_blank"
+         style="--accent:#f59e0b;--accent-bg:rgba(245,158,11,0.1);--accent-border:rgba(245,158,11,0.3)">
+        <div class="card-top">
+          <div class="card-logo">👥</div>
+          <span class="card-tag">角色 / 任务</span>
+        </div>
+        <div class="card-name">CrewAI 源码解析</div>
+        <div class="card-sub">多 Agent 协作编排框架。解析 Crew、Agent、Task、Flow 四大核心抽象与执行管线。</div>
+        <div class="card-footer">
+          <span class="card-meta">22 章 + 3 附录</span>
+          <span class="card-arrow">→</span>
+        </div>
+      </a>
+
+      <a class="card" href="https://autogen-book.myhubs.dev" target="_blank"
+         style="--accent:#6366f1;--accent-bg:rgba(99,102,241,0.1);--accent-border:rgba(99,102,241,0.3)">
+        <div class="card-top">
+          <div class="card-logo">💬</div>
+          <span class="card-tag">对话 / 分布式</span>
+        </div>
+        <div class="card-name">AG2 源码解析</div>
+        <div class="card-sub">微软 AutoGen 开源社区版。剖析 ConversableAgent、GroupChat、嵌套对话与 Actor 模型。</div>
+        <div class="card-footer">
+          <span class="card-meta">20 章 + 3 附录</span>
+          <span class="card-arrow">→</span>
+        </div>
+      </a>
+
+      <a class="card" href="https://pydantic-ai-book.myhubs.dev" target="_blank"
+         style="--accent:#e92063;--accent-bg:rgba(233,32,99,0.1);--accent-border:rgba(233,32,99,0.3)">
+        <div class="card-top">
+          <div class="card-logo">🔷</div>
+          <span class="card-tag">类型安全 / MCP</span>
+        </div>
+        <div class="card-name">Pydantic AI 源码解析</div>
+        <div class="card-sub">类型安全的 Python Agent 框架。解读 Agent、Deps 注入、Tool 系统与 MCP 客户端集成。</div>
+        <div class="card-footer">
+          <span class="card-meta">18 章 + 3 附录</span>
+          <span class="card-arrow">→</span>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ── Section 2: 记忆与向量数据层 ── -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background:rgba(16,185,129,0.15)">🧠</div>
+      <div>
+        <div class="section-title">记忆与向量数据层</div>
+      </div>
+      <div class="section-desc">Embedding 存储、检索与记忆管理</div>
+    </div>
+    <div class="grid">
+
+      <a class="card" href="https://mem0-book.myhubs.dev" target="_blank"
+         style="--accent:#10b981;--accent-bg:rgba(16,185,129,0.1);--accent-border:rgba(16,185,129,0.3)">
+        <div class="card-top">
+          <div class="card-logo">🧩</div>
+          <span class="card-tag">记忆 / RAG</span>
+        </div>
+        <div class="card-name">Mem0 源码解析</div>
+        <div class="card-sub">AI Agent 智能记忆层。深入 Memory 提取、向量检索、图存储与跨会话记忆管理机制。</div>
+        <div class="card-footer">
+          <span class="card-meta">章节丰富</span>
+          <span class="card-arrow">→</span>
+        </div>
+      </a>
+
+      <a class="card" href="https://chroma-book.myhubs.dev" target="_blank"
+         style="--accent:#f97316;--accent-bg:rgba(249,115,22,0.1);--accent-border:rgba(249,115,22,0.3)">
+        <div class="card-top">
+          <div class="card-logo">🟠</div>
+          <span class="card-tag">向量库 / Python</span>
+        </div>
+        <div class="card-name">Chroma 源码解析</div>
+        <div class="card-sub">面向 AI 应用的开源向量数据库。剖析 Collection、HNSW 索引、EmbeddingFunction 与 Segment 架构。</div>
+        <div class="card-footer">
+          <span class="card-meta">18 章 + 3 附录</span>
+          <span class="card-arrow">→</span>
+        </div>
+      </a>
+
+      <a class="card" href="https://qdrant-book.myhubs.dev" target="_blank"
+         style="--accent:#dc244c;--accent-bg:rgba(220,36,76,0.1);--accent-border:rgba(220,36,76,0.3)">
+        <div class="card-top">
+          <div class="card-logo">⚡</div>
+          <span class="card-tag">向量库 / Rust</span>
+        </div>
+        <div class="card-name">Qdrant 源码解析</div>
+        <div class="card-sub">Rust 构建的高性能向量搜索引擎。解析 HNSW、量化压缩、Raft 共识与分布式分片架构。</div>
+        <div class="card-footer">
+          <span class="card-meta">20 章 + 3 附录</span>
+          <span class="card-arrow">→</span>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ── Section 3: 应用框架与工具链 ── -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background:rgba(139,92,246,0.15)">🚀</div>
+      <div>
+        <div class="section-title">应用框架与工具链</div>
+      </div>
+      <div class="section-desc">AI 应用落地与开发效率工具</div>
+    </div>
+    <div class="grid">
+
+      <a class="card" href="https://deerflow-book.myhubs.dev" target="_blank"
+         style="--accent:#8b5cf6;--accent-bg:rgba(139,92,246,0.1);--accent-border:rgba(139,92,246,0.3)">
+        <div class="card-top">
+          <div class="card-logo">🦌</div>
+          <span class="card-tag">Super Agent</span>
+        </div>
+        <div class="card-name">DeerFlow 源码解析</div>
+        <div class="card-sub">字节跳动开源 Super Agent Harness。解析 Research Pipeline、工具编排与多步推理架构。</div>
+        <div class="card-footer">
+          <span class="card-meta">章节丰富</span>
+          <span class="card-arrow">→</span>
+        </div>
+      </a>
+
+      <a class="card" href="https://opencode-book.myhubs.dev" target="_blank"
+         style="--accent:#0ea5e9;--accent-bg:rgba(14,165,233,0.1);--accent-border:rgba(14,165,233,0.3)">
+        <div class="card-top">
+          <div class="card-logo">💻</div>
+          <span class="card-tag">AI 编程助手</span>
+        </div>
+        <div class="card-name">OpenCode 源码解析</div>
+        <div class="card-sub">开源 AI 编程助手深度解析。剖析 LSP 集成、上下文构建、工具调用与 TUI 交互架构。</div>
+        <div class="card-footer">
+          <span class="card-meta">章节丰富</span>
+          <span class="card-arrow">→</span>
+        </div>
+      </a>
+
+      <a class="card" href="https://openclaw-book.myhubs.dev" target="_blank"
+         style="--accent:#06b6d4;--accent-bg:rgba(6,182,212,0.1);--accent-border:rgba(6,182,212,0.3)">
+        <div class="card-top">
+          <div class="card-logo">🦞</div>
+          <span class="card-tag">AI Runtime</span>
+        </div>
+        <div class="card-name">OpenClaw 源码解析</div>
+        <div class="card-sub">AI 个人助手 Runtime 深度剖析。解读消息管道、技能系统、多渠道路由与 Agent 编排机制。</div>
+        <div class="card-footer">
+          <span class="card-meta">26 章 + 3 附录</span>
+          <span class="card-arrow">→</span>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>持续更新中 · <a href="https://github.com/coolclaws" target="_blank">coolclaws @ GitHub</a></p>
+</footer>
+
+</body>
+</html>
