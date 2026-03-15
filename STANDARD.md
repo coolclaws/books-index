@@ -248,25 +248,47 @@ node_modules/
 3. **本地验证**：`npm install && npm run docs:build`
 4. **创建 GitHub Repo**：
    ```bash
-   GH_TOKEN=xxx gh repo create coolclaws/{name}-book --public
+   curl -s -X POST "https://api.github.com/user/repos" \
+     -H "Authorization: token $GH_TOKEN" \
+     -H "Content-Type: application/json" \
+     -d '{"name":"{name}-book","private":false,"auto_init":false}'
    ```
-5. **push 代码**（记得加 .gitignore，不提交 node_modules）
-6. **开启 GitHub Pages**（Actions 模式）：
+5. **push 代码**（记得加 .gitignore，不提交 node_modules）：
    ```bash
-   gh api repos/coolclaws/{name}-book/pages --method POST \
-     --field "source[branch]=main" --field "source[path]=/"
-   gh api repos/coolclaws/{name}-book/pages --method PUT \
-     --field "build_type=workflow"
+   git init && git add . && git commit -m "init: ..."
+   git branch -M main && git push -u origin main
    ```
+6. **开启 GitHub Pages + 设置自定义域名**（两步缺一不可）：
+   ```bash
+   # Step 1: 开启 Pages（workflow 模式）
+   curl -s -X POST "https://api.github.com/repos/coolclaws/{name}-book/pages" \
+     -H "Authorization: token $GH_TOKEN" \
+     -H "Content-Type: application/json" \
+     -d '{"build_type":"workflow"}'
+
+   # Step 2: 设置 custom domain（⚠️ 必须显式设置，否则自定义域名 404）
+   curl -s -X PUT "https://api.github.com/repos/coolclaws/{name}-book/pages" \
+     -H "Authorization: token $GH_TOKEN" \
+     -H "Content-Type: application/json" \
+     -d '{"cname":"{name}-book.myhubs.dev"}'
+
+   # Step 3: 触发首次 workflow 部署
+   curl -s -X POST "https://api.github.com/repos/coolclaws/{name}-book/actions/workflows/deploy.yml/dispatches" \
+     -H "Authorization: token $GH_TOKEN" \
+     -H "Content-Type: application/json" \
+     -d '{"ref":"main"}'
+   ```
+   > **注意**：即使 `public/CNAME` 文件存在，GitHub Pages 也不会自动读取并生效。
+   > 必须通过 API PUT `/pages` 的 `cname` 字段显式绑定，custom domain 才会正常解析。
+
 7. **添加 Cloudflare DNS CNAME**：
    - Zone ID：`605d32215ab6096167efff4f4dcd86fa`
    - Token：在 `/Users/claw/models/cryptosurf/.env.local` 的 `CLOUDFLARE_API_TOKEN`
    ```bash
-   curl -s -X POST "https://api.cloudflare.com/client/v4/zones/$ZONE/dns_records" \
+   curl -s -X POST "https://api.cloudflare.com/client/v4/zones/$CF_ZONE/dns_records" \
      -H "Authorization: Bearer $CF_TOKEN" \
      -H "Content-Type: application/json" \
-     --data '{"type":"CNAME","name":"{name}-book.myhubs.dev",
-              "content":"coolclaws.github.io","ttl":1,"proxied":true}'
+     -d '{"type":"CNAME","name":"{name}-book","content":"coolclaws.github.io","ttl":1,"proxied":true}'
    ```
 8. **更新 books.myhubs.dev 索引页**：
    - 编辑 `/tmp/books-index/index.html`
@@ -302,15 +324,35 @@ CNAME：{name}-book.myhubs.dev
 
 ## 十二、当前书库
 
+### 应用框架与工具链
 | 书名 | 域名 | Repo | Stars |
 |------|------|------|-------|
 | OpenClaw 源码解析 | openclaw-book.myhubs.dev | coolclaws/openclaw-book | 314.6k |
 | DeerFlow 源码解析 | deerflow-book.myhubs.dev | coolclaws/deerflow-book | 30.8k |
 | OpenCode 源码解析 | opencode-book.myhubs.dev | coolclaws/opencode-book | 122.6k |
+
+### Agent 编排框架
+| 书名 | 域名 | Repo | Stars |
+|------|------|------|-------|
 | LangGraph 源码解析 | langgraph-book.myhubs.dev | coolclaws/langgraph-book | 26.4k |
 | CrewAI 源码解析 | crewai-book.myhubs.dev | coolclaws/crewai-book | 46.1k |
 | AG2 源码解析 | autogen-book.myhubs.dev | coolclaws/autogen-book | 4.3k |
 | Pydantic AI 源码解析 | pydantic-ai-book.myhubs.dev | coolclaws/pydantic-ai-book | 15.5k |
+
+### 记忆与向量数据层
+| 书名 | 域名 | Repo | Stars |
+|------|------|------|-------|
 | Mem0 源码解析 | mem0-book.myhubs.dev | coolclaws/mem0-book | 49.9k |
 | Chroma 源码解析 | chroma-book.myhubs.dev | coolclaws/chroma-book | 26.6k |
 | Qdrant 源码解析 | qdrant-book.myhubs.dev | coolclaws/qdrant-book | 29.6k |
+
+### 推理引擎
+| 书名 | 域名 | Repo | Stars |
+|------|------|------|-------|
+| vLLM 源码解析 | vllm-book.myhubs.dev | coolclaws/vllm-book | 73.2k |
+| SGLang 源码解析 | sglang-book.myhubs.dev | coolclaws/sglang-book | 24.5k |
+| Mini-SGLang 源码解析 | mini-sglang-book.myhubs.dev | coolclaws/mini-sglang-book | 3.7k |
+| TensorRT-LLM 源码解析 | trtllm-book.myhubs.dev | coolclaws/trtllm-book | 13.1k |
+| llama.cpp 源码解析 | llamacpp-book.myhubs.dev | coolclaws/llamacpp-book | 98k |
+| MLX 源码解析 | mlx-book.myhubs.dev | coolclaws/mlx-book | 24.5k |
+| MLX-LM 源码解析 | mlx-lm-book.myhubs.dev | coolclaws/mlx-lm-book | 4k |
