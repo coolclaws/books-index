@@ -395,10 +395,12 @@ CNAME：{name}-book.myhubs.dev
 ### Agent 编排框架
 | 书名 | 域名 | Repo | Stars |
 |------|------|------|-------|
-| LangGraph 源码解析 | langgraph-book.myhubs.dev | coolclaws/langgraph-book | 26.4k |
 | CrewAI 源码解析 | crewai-book.myhubs.dev | coolclaws/crewai-book | 46.1k |
-| AG2 源码解析 | autogen-book.myhubs.dev | coolclaws/autogen-book | 4.3k |
+| LangGraph 源码解析 | langgraph-book.myhubs.dev | coolclaws/langgraph-book | 26.4k |
 | Pydantic AI 源码解析 | pydantic-ai-book.myhubs.dev | coolclaws/pydantic-ai-book | 15.5k |
+| deepagents 源码解析 | deepagents-book.myhubs.dev | coolclaws/deepagents-book | 13.9k |
+| open-swe 源码解析 | open-swe-book.myhubs.dev | coolclaws/open-swe-book | 5.3k |
+| AG2 源码解析 | autogen-book.myhubs.dev | coolclaws/autogen-book | 4.3k |
 
 ### 记忆与向量数据层
 | 书名 | 域名 | Repo | Stars |
