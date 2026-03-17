@@ -196,22 +196,22 @@
     .sidebar::-webkit-scrollbar { width: 4px; }
     .sidebar::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
     .toc-title {
-      font-size: 11px;
+      font-size: 12px;
       font-weight: 600;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
       color: var(--muted);
-      margin-bottom: 12px;
-      padding-left: 10px;
+      margin-bottom: 14px;
+      padding-left: 12px;
     }
     .toc-list { list-style: none; }
     .toc-item a {
       display: flex;
       align-items: center;
-      gap: 8px;
-      padding: 7px 10px;
-      border-radius: 6px;
-      font-size: 13px;
+      gap: 10px;
+      padding: 9px 12px;
+      border-radius: 8px;
+      font-size: 14px;
       color: var(--muted);
       text-decoration: none;
       transition: color 0.15s, background 0.15s;
@@ -219,20 +219,20 @@
     }
     .toc-item a:hover {
       color: var(--text);
-      background: rgba(255,255,255,0.04);
+      background: rgba(255,255,255,0.05);
     }
     .toc-dot {
-      width: 5px;
-      height: 5px;
+      width: 6px;
+      height: 6px;
       border-radius: 50%;
-      background: transparent;
+      background: rgba(255,255,255,0.15);
       flex-shrink: 0;
       transition: background 0.15s, box-shadow 0.15s;
     }
     .toc-count {
       margin-left: auto;
-      font-size: 11px;
-      color: rgba(124,140,160,0.5);
+      font-size: 12px;
+      color: rgba(124,140,160,0.6);
       font-weight: 500;
     }
     .toc-item a.active {
@@ -241,7 +241,7 @@
     }
     .toc-item a.active .toc-dot {
       background: #6366f1;
-      box-shadow: 0 0 6px rgba(99,102,241,0.6);
+      box-shadow: 0 0 8px rgba(99,102,241,0.7);
     }
 
     /* ── Main Content ── */
@@ -433,7 +433,7 @@
   <div style="position:relative;z-index:2;">
   <div class="badge">📚 开源技术丛书</div>
   <h1><span class="grad">AI 源码解析 书库</span></h1>
-  <p class="subtitle">深入剖析 AI 生态核心项目，从 Agent 编排到向量存储，读懂每一行背后的设计哲学。</p>
+  <p class="subtitle">50 本开源项目源码解析，覆盖 Agent 框架、推理引擎、训练微调、语音多模态等核心方向。读源码，懂设计，建认知。</p>
   <div class="stats">
     <div class="stat">
       <div class="stat-num" data-target="50">0</div>
