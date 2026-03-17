@@ -408,6 +408,7 @@ CNAME：{name}-book.myhubs.dev
 | Mem0 源码解析 | mem0-book.myhubs.dev | coolclaws/mem0-book | 49.9k |
 | Chroma 源码解析 | chroma-book.myhubs.dev | coolclaws/chroma-book | 26.6k |
 | Qdrant 源码解析 | qdrant-book.myhubs.dev | coolclaws/qdrant-book | 29.6k |
+| memory-lancedb-pro 源码解析 | memory-lancedb-pro-book.myhubs.dev | coolclaws/memory-lancedb-pro-book | 2.9k |
 
 ### 推理引擎
 | 书名 | 域名 | Repo | Stars |
