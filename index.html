@@ -26,10 +26,51 @@
       line-height: 1.6;
     }
 
+    /* ── Navbar ── */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 56px;
+      background: rgba(10,12,20,0.8);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 28px;
+      z-index: 1000;
+    }
+    .navbar-logo {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.3px;
+    }
+    .navbar-logo .hl { color: #818cf8; }
+    .navbar-gh {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 500;
+      text-decoration: none;
+      background: rgba(255,255,255,0.03);
+      transition: border-color 0.15s, color 0.15s;
+    }
+    .navbar-gh:hover { border-color: rgba(255,255,255,0.15); color: var(--text); }
+
     /* ── Header ── */
     header {
       text-align: center;
-      padding: 72px 24px 48px;
+      padding: 130px 24px 64px;
       position: relative;
       overflow: hidden;
     }
@@ -37,48 +78,176 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(99,102,241,0.15) 0%, transparent 70%);
+      background:
+        radial-gradient(ellipse 70% 50% at 20% 50%, rgba(139,92,246,0.14) 0%, transparent 60%),
+        radial-gradient(ellipse 70% 50% at 80% 50%, rgba(99,102,241,0.12) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 80% at 50% 0%, rgba(6,182,212,0.16) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    header::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 80%);
+      -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 80%);
       pointer-events: none;
     }
     .badge {
-      display: inline-block;
-      padding: 4px 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 16px;
       border-radius: 999px;
-      border: 1px solid rgba(99,102,241,0.4);
+      border: 1px solid rgba(99,102,241,0.35);
       color: #a5b4fc;
-      font-size: 13px;
-      margin-bottom: 20px;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      margin-bottom: 28px;
       background: rgba(99,102,241,0.08);
+      backdrop-filter: blur(8px);
+      position: relative;
+    }
+    .badge::before {
+      content: "";
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #6366f1;
+      box-shadow: 0 0 6px #6366f1;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
     }
     h1 {
-      font-size: clamp(28px, 5vw, 48px);
-      font-weight: 700;
-      letter-spacing: -0.5px;
-      margin-bottom: 16px;
+      font-size: clamp(36px, 6vw, 64px);
+      font-weight: 800;
+      letter-spacing: -1.5px;
+      margin-bottom: 20px;
+      line-height: 1.1;
+      position: relative;
     }
-    h1 span { color: #818cf8; }
+    h1 .grad {
+      background: linear-gradient(135deg, #e2e8f0 0%, #c7d2fe 40%, #818cf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
     .subtitle {
       color: var(--muted);
-      font-size: 16px;
-      max-width: 520px;
-      margin: 0 auto 12px;
+      font-size: 17px;
+      max-width: 560px;
+      margin: 0 auto 36px;
+      line-height: 1.7;
+      position: relative;
     }
     .stats {
       display: flex;
-      gap: 32px;
+      gap: 0;
       justify-content: center;
-      margin-top: 28px;
-      flex-wrap: wrap;
+      position: relative;
     }
-    .stat { text-align: center; }
-    .stat-num { font-size: 28px; font-weight: 700; color: var(--text); }
-    .stat-label { font-size: 13px; color: var(--muted); }
+    .stat {
+      text-align: center;
+      padding: 20px 40px;
+      border: 1px solid var(--border);
+      background: linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+      backdrop-filter: blur(8px);
+    }
+    .stat:first-child { border-radius: 12px 0 0 12px; }
+    .stat:last-child { border-radius: 0 12px 12px 0; }
+    .stat + .stat { border-left: none; }
+    .stat-num {
+      font-size: 32px;
+      font-weight: 800;
+      background: linear-gradient(135deg, #e2e8f0, #a5b4fc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .stat-label { font-size: 12px; color: var(--muted); letter-spacing: 0.04em; }
 
-    /* ── Main ── */
-    main {
-      max-width: 1160px;
+    /* ── Layout: sidebar + content ── */
+    .layout {
+      display: flex;
+      align-items: flex-start;
+      max-width: 1380px;
       margin: 0 auto;
       padding: 0 24px 80px;
+      gap: 32px;
+    }
+
+    /* ── Sidebar TOC ── */
+    .sidebar {
+      width: 220px;
+      flex-shrink: 0;
+      position: sticky;
+      top: 76px;
+      max-height: calc(100vh - 96px);
+      overflow-y: auto;
+    }
+    .sidebar::-webkit-scrollbar { width: 4px; }
+    .sidebar::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+    .toc-title {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 12px;
+      padding-left: 10px;
+    }
+    .toc-list { list-style: none; }
+    .toc-item a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 10px;
+      border-radius: 6px;
+      font-size: 13px;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.15s, background 0.15s;
+      line-height: 1.4;
+    }
+    .toc-item a:hover {
+      color: var(--text);
+      background: rgba(255,255,255,0.04);
+    }
+    .toc-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: transparent;
+      flex-shrink: 0;
+      transition: background 0.15s, box-shadow 0.15s;
+    }
+    .toc-count {
+      margin-left: auto;
+      font-size: 11px;
+      color: rgba(124,140,160,0.5);
+      font-weight: 500;
+    }
+    .toc-item a.active {
+      color: #a5b4fc;
+      background: rgba(99,102,241,0.12);
+    }
+    .toc-item a.active .toc-dot {
+      background: #6366f1;
+      box-shadow: 0 0 6px rgba(99,102,241,0.6);
+    }
+
+    /* ── Main Content ── */
+    .content {
+      flex: 1;
+      min-width: 0;
     }
 
     /* ── Section ── */
@@ -100,6 +269,11 @@
     .section-icon img { width: 20px; height: 20px; }
     .section-title { font-size: 20px; font-weight: 600; }
     .section-desc { font-size: 14px; color: var(--muted); margin-left: auto; }
+
+    @media (max-width: 1024px) {
+      .sidebar { display: none; }
+      .layout { padding: 0 16px 60px; }
+    }
 
     /* ── Card Grid ── */
     .grid {
@@ -127,23 +301,36 @@
       content: "";
       position: absolute;
       top: 0; left: 0; right: 0;
-      height: 3px;
+      height: 2px;
       background: var(--accent);
       opacity: 0;
       transition: opacity 0.18s ease;
     }
+    .card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, var(--accent-bg), transparent);
+      opacity: 0;
+      transition: opacity 0.18s ease;
+      pointer-events: none;
+      border-radius: var(--radius);
+    }
     .card:hover {
       transform: translateY(-3px);
       border-color: rgba(255,255,255,0.14);
-      box-shadow: 0 12px 32px rgba(0,0,0,0.3);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.3), 0 0 20px var(--accent-bg);
     }
     .card:hover::before { opacity: 1; }
+    .card:hover::after { opacity: 1; }
 
     .card-top {
       display: flex;
       align-items: flex-start;
       justify-content: space-between;
       gap: 8px;
+      position: relative;
+      z-index: 1;
     }
     .card-logo {
       width: 44px; height: 44px;
@@ -171,12 +358,16 @@
       font-size: 17px;
       font-weight: 600;
       line-height: 1.3;
+      position: relative;
+      z-index: 1;
     }
     .card-sub {
       font-size: 13px;
       color: var(--muted);
       line-height: 1.5;
       flex: 1;
+      position: relative;
+      z-index: 1;
     }
     .card-footer {
       display: flex;
@@ -185,6 +376,8 @@
       padding-top: 8px;
       border-top: 1px solid var(--border);
       margin-top: auto;
+      position: relative;
+      z-index: 1;
     }
     .card-meta {
       display: flex;
@@ -228,30 +421,47 @@
 </head>
 <body>
 
+<nav class="navbar">
+  <a class="navbar-logo" href="#">AI <span class="hl">源码解析</span>书库</a>
+  <a class="navbar-gh" href="https://github.com/coolclaws" target="_blank">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+    GitHub
+  </a>
+</nav>
+
 <header>
   <div class="badge">📚 开源技术丛书</div>
-  <h1>AI <span>源码解析</span> 书库</h1>
+  <h1><span class="grad">AI 源码解析 书库</span></h1>
   <p class="subtitle">深入剖析 AI 生态核心项目，从 Agent 编排到向量存储，读懂每一行背后的设计哲学。</p>
   <div class="stats">
     <div class="stat">
-      <div class="stat-num">50</div>
+      <div class="stat-num" data-target="50">0</div>
       <div class="stat-label">本书</div>
     </div>
     <div class="stat">
-      <div class="stat-num">500+</div>
+      <div class="stat-num" data-target="500" data-suffix="+">0</div>
       <div class="stat-label">章节</div>
     </div>
     <div class="stat">
-      <div class="stat-num">12</div>
+      <div class="stat-num" data-target="12">0</div>
       <div class="stat-label">技术方向</div>
     </div>
   </div>
 </header>
 
-<main>
+<div class="layout">
+
+  <aside class="sidebar">
+    <div class="toc-title">目录</div>
+    <ul class="toc-list" id="toc-list">
+      <!-- JS will populate -->
+    </ul>
+  </aside>
+
+  <div class="content">
 
   <!-- ── Section 1: Agent 框架与 Agent 编排 ── -->
-  <section class="section">
+  <section class="section" id="agent-framework">
     <div class="section-header">
       <div class="section-icon" style="background:rgba(99,102,241,0.15)">
         <img src="/public/icons/section-agent.svg" width="20" height="20"/>
@@ -488,7 +698,7 @@
   </section>
 
   <!-- ── Section 2: Coding Agent ── -->
-  <section class="section">
+  <section class="section" id="coding-agent">
     <div class="section-header">
       <div class="section-icon" style="background:rgba(168,85,247,0.15)">
         <img src="/public/icons/section-tools.svg" width="20" height="20"/>
@@ -544,7 +754,7 @@
   </section>
 
   <!-- ── Section 2b: 其他应用 ── -->
-  <section class="section">
+  <section class="section" id="other-apps">
     <div class="section-header">
       <div class="section-icon" style="background:rgba(245,158,11,0.15)">
         <img src="/public/icons/section-tools.svg" width="20" height="20"/>
@@ -600,7 +810,7 @@
   </section>
 
   <!-- ── Section 3: 存储、检索与记忆管理 ── -->
-  <section class="section">
+  <section class="section" id="storage-memory">
     <div class="section-header">
       <div class="section-icon" style="background:rgba(16,185,129,0.15)">
         <img src="/public/icons/section-memory.svg" width="20" height="20"/>
@@ -796,7 +1006,7 @@
   </section>
 
   <!-- ── Section 4: AI/LLM Gateway ── -->
-  <section class="section">
+  <section class="section" id="ai-gateway">
     <div class="section-header">
       <div class="section-icon" style="background:rgba(139,92,246,0.15)">
         <img src="/public/icons/section-tools.svg" width="20" height="20"/>
@@ -912,7 +1122,7 @@
   </section>
 
   <!-- ── Section 5: 结构化输出 ── -->
-  <section class="section">
+  <section class="section" id="structured-output">
     <div class="section-header">
       <div class="section-icon" style="background:rgba(124,58,237,0.15)">
         <img src="/public/icons/section-tools.svg" width="20" height="20"/>
@@ -968,7 +1178,7 @@
   </section>
 
   <!-- ── Section 6: 推理引擎 ── -->
-  <section class="section">
+  <section class="section" id="inference-engine">
     <div class="section-header">
       <div class="section-icon" style="background:rgba(245,158,11,0.15)">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
@@ -1124,7 +1334,7 @@
   </section>
 
   <!-- ── Section: 语音/TTS ── -->
-  <section class="section">
+  <section class="section" id="voice-tts">
     <div class="section-header">
       <div class="section-icon" style="background:rgba(6,182,212,0.15)">
         <img src="/public/icons/section-tools.svg" width="20" height="20"/>
@@ -1200,7 +1410,7 @@
   </section>
 
   <!-- ── Section: 多模态/视觉 ── -->
-  <section class="section">
+  <section class="section" id="multimodal-vision">
     <div class="section-header">
       <div class="section-icon" style="background:rgba(66,133,244,0.15)">
         <img src="/public/icons/section-tools.svg" width="20" height="20"/>
@@ -1256,7 +1466,7 @@
   </section>
 
   <!-- ── Section 5: 训练与微调 ── -->
-  <section class="section">
+  <section class="section" id="training-finetuning">
     <div class="section-header">
       <div class="section-icon" style="background:rgba(236,72,153,0.15)">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ec4899" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/><path d="M12 8v4l3 3"/></svg>
@@ -1352,7 +1562,7 @@
   </section>
 
   <!-- ── Section 末: 协议相关 ── -->
-  <section class="section">
+  <section class="section" id="protocols">
     <div class="section-header">
       <div class="section-icon" style="background:rgba(66,133,244,0.15)">
         <img src="/public/icons/section-agent.svg" width="20" height="20"/>
@@ -1427,11 +1637,80 @@
     </div>
   </section>
 
-</main>
+  </div><!-- .content -->
+</div><!-- .layout -->
 
 <footer>
   <p>持续更新中 · <a href="https://github.com/coolclaws" target="_blank">coolclaws @ GitHub</a></p>
 </footer>
+
+<script>
+(function() {
+  // ── CountUp animation ──
+  const nums = document.querySelectorAll('.stat-num[data-target]');
+  const duration = 500;
+  function countUp(el) {
+    const target = +el.dataset.target;
+    const suffix = el.dataset.suffix || '';
+    const start = performance.now();
+    function tick(now) {
+      const p = Math.min((now - start) / duration, 1);
+      const ease = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(target * ease) + suffix;
+      if (p < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+  const statsObs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        countUp(e.target);
+        statsObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.5 });
+  nums.forEach(function(el) { statsObs.observe(el); });
+
+  // ── Sidebar TOC ──
+  var sections = document.querySelectorAll('.section[id]');
+  var tocList = document.getElementById('toc-list');
+  sections.forEach(function(sec) {
+    var title = sec.querySelector('.section-title').textContent;
+    var count = sec.querySelectorAll('.card').length;
+    var li = document.createElement('li');
+    li.className = 'toc-item';
+    li.innerHTML = '<a href="#' + sec.id + '"><span class="toc-dot"></span><span class="toc-name">' + title + '</span><span class="toc-count">' + count + '</span></a>';
+    tocList.appendChild(li);
+  });
+
+  // ── Intersection Observer for TOC highlight ──
+  var tocLinks = tocList.querySelectorAll('a');
+  var sectionObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      var id = entry.target.id;
+      var link = tocList.querySelector('a[href="#' + id + '"]');
+      if (link) {
+        if (entry.isIntersecting) {
+          tocLinks.forEach(function(l) { l.classList.remove('active'); });
+          link.classList.add('active');
+        }
+      }
+    });
+  }, { rootMargin: '-80px 0px -60% 0px', threshold: 0 });
+  sections.forEach(function(sec) { sectionObserver.observe(sec); });
+
+  // ── Smooth scroll ──
+  tocList.addEventListener('click', function(e) {
+    var a = e.target.closest('a');
+    if (!a) return;
+    e.preventDefault();
+    var target = document.querySelector(a.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+})();
+</script>
 
 </body>
 </html>
