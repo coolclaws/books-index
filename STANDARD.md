@@ -392,6 +392,16 @@ CNAME：{name}-book.myhubs.dev
 | DeerFlow 源码解析 | deerflow-book.myhubs.dev | coolclaws/deerflow-book | 30.8k |
 | OpenCode 源码解析 | opencode-book.myhubs.dev | coolclaws/opencode-book | 122.6k |
 
+### AI/LLM Gateway
+| 书名 | 域名 | Repo | Stars |
+|------|------|------|-------|
+| LiteLLM 源码解析 | litellm-book.myhubs.dev | coolclaws/litellm-book | 39.3k |
+| Higress 源码解析 | higress-book.myhubs.dev | coolclaws/higress-book | 7.8k |
+| TensorZero 源码解析 | tensorzero-book.myhubs.dev | coolclaws/tensorzero-book | 11.1k |
+| Portkey Gateway 源码解析 | portkey-book.myhubs.dev | coolclaws/portkey-book | 10.9k |
+| Helicone 源码解析 | helicone-book.myhubs.dev | coolclaws/helicone-book | 5.3k |
+| Bifrost 源码解析 | bifrost-book.myhubs.dev | coolclaws/bifrost-book | 3k |
+
 ### Agent 编排框架
 | 书名 | 域名 | Repo | Stars |
 |------|------|------|-------|
