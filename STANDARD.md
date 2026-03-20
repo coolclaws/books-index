@@ -352,8 +352,8 @@ node_modules/
      -d '{"type":"CNAME","name":"{name}-book","content":"coolclaws.github.io","ttl":1,"proxied":true}'
    ```
 8. **更新 books.myhubs.dev 索引页**：
-   - 编辑 `/tmp/books-index/index.html`
-   - 加入新卡片（参考现有格式）
+   - 编辑 `/Users/claw/models/books-index/index.html`
+   - 加入新卡片（参考现有格式），同步更新 `STANDARD.md` 十三节书库目录
    - commit & push → coolclaws/books-index
 
 ---
@@ -385,12 +385,52 @@ CNAME：{name}-book.myhubs.dev
 
 ## 十三、当前书库
 
-### 应用框架与工具链
+_最后更新：2026-03-20 · 共 66 本书 · 13 个技术方向_
+
+### Agent 框架与 Agent 编排
 | 书名 | 域名 | Repo | Stars |
 |------|------|------|-------|
 | OpenClaw 源码解析 | openclaw-book.myhubs.dev | coolclaws/openclaw-book | 314.6k |
+| CrewAI 源码解析 | crewai-book.myhubs.dev | coolclaws/crewai-book | 46.1k |
+| Agno 源码解析 | agno-book.myhubs.dev | coolclaws/agno-book | 38.7k |
 | DeerFlow 源码解析 | deerflow-book.myhubs.dev | coolclaws/deerflow-book | 30.8k |
+| LangGraph 源码解析 | langgraph-book.myhubs.dev | coolclaws/langgraph-book | 26.4k |
+| smolagents 源码解析 | smolagents-book.myhubs.dev | coolclaws/smolagents-book | 26k |
+| Mastra 源码解析 | mastra-book.myhubs.dev | coolclaws/mastra-book | 22k |
+| OpenAI Agents SDK 源码解析 | openai-agents-book.myhubs.dev | coolclaws/openai-agents-book | 20k |
+| Google ADK 源码解析 | adk-book.myhubs.dev | coolclaws/adk-book | 18.4k |
+| Pydantic AI 源码解析 | pydantic-ai-book.myhubs.dev | coolclaws/pydantic-ai-book | 15.5k |
+| deepagents 源码解析 | deepagents-book.myhubs.dev | coolclaws/deepagents-book | 13.9k |
+| open-swe 源码解析 | open-swe-book.myhubs.dev | coolclaws/open-swe-book | 5.3k |
+| AG2 源码解析 | autogen-book.myhubs.dev | coolclaws/autogen-book | 4.3k |
+| NemoClaw 源码解析 | nemoclaw-book.myhubs.dev | coolclaws/nemoclaw-book | 2.7k |
+
+### Coding Agent
+| 书名 | 域名 | Repo | Stars |
+|------|------|------|-------|
 | OpenCode 源码解析 | opencode-book.myhubs.dev | coolclaws/opencode-book | 122.6k |
+| Cline 源码解析 | cline-book.myhubs.dev | coolclaws/cline-book | 59k |
+
+### 其他应用
+| 书名 | 域名 | Repo | Stars |
+|------|------|------|-------|
+| Superpowers 源码解析 | superpowers-book.myhubs.dev | coolclaws/superpowers-book | 89.7k |
+| Browser Use 源码解析 | browser-use-book.myhubs.dev | coolclaws/browser-use-book | 81k |
+
+### 存储、检索与记忆管理
+| 书名 | 域名 | Repo | Stars |
+|------|------|------|-------|
+| Mem0 源码解析 | mem0-book.myhubs.dev | coolclaws/mem0-book | 49.9k |
+| LlamaIndex 源码解析 | llamaindex-book.myhubs.dev | coolclaws/llamaindex-book | 47.7k |
+| Letta 源码解析 | letta-book.myhubs.dev | coolclaws/letta-book | 21.6k |
+| RAGFlow 源码解析 | ragflow-book.myhubs.dev | coolclaws/ragflow-book | 75k |
+| Milvus 源码解析 | milvus-book.myhubs.dev | coolclaws/milvus-book | 43.3k |
+| Qdrant 源码解析 | qdrant-book.myhubs.dev | coolclaws/qdrant-book | 29.6k |
+| LightRAG 源码解析 | lightrag-book.myhubs.dev | coolclaws/lightrag-book | 29.6k |
+| Chroma 源码解析 | chroma-book.myhubs.dev | coolclaws/chroma-book | 26.6k |
+| OpenViking 源码解析 | openviking-book.myhubs.dev | coolclaws/openviking-book | 14.6k |
+| qmd 源码解析 | qmd-book.myhubs.dev | coolclaws/qmd-book | 1.2k |
+| memory-lancedb-pro 源码解析 | memory-lancedb-pro-book.myhubs.dev | coolclaws/memory-lancedb-pro-book | 2.9k |
 
 ### AI/LLM Gateway
 | 书名 | 域名 | Repo | Stars |
@@ -402,31 +442,61 @@ CNAME：{name}-book.myhubs.dev
 | Helicone 源码解析 | helicone-book.myhubs.dev | coolclaws/helicone-book | 5.3k |
 | Bifrost 源码解析 | bifrost-book.myhubs.dev | coolclaws/bifrost-book | 3k |
 
-### Agent 编排框架
+### 结构化输入 / 输出
 | 书名 | 域名 | Repo | Stars |
 |------|------|------|-------|
-| CrewAI 源码解析 | crewai-book.myhubs.dev | coolclaws/crewai-book | 46.1k |
-| LangGraph 源码解析 | langgraph-book.myhubs.dev | coolclaws/langgraph-book | 26.4k |
-| Pydantic AI 源码解析 | pydantic-ai-book.myhubs.dev | coolclaws/pydantic-ai-book | 15.5k |
-| deepagents 源码解析 | deepagents-book.myhubs.dev | coolclaws/deepagents-book | 13.9k |
-| open-swe 源码解析 | open-swe-book.myhubs.dev | coolclaws/open-swe-book | 5.3k |
-| AG2 源码解析 | autogen-book.myhubs.dev | coolclaws/autogen-book | 4.3k |
-
-### 记忆与向量数据层
-| 书名 | 域名 | Repo | Stars |
-|------|------|------|-------|
-| Mem0 源码解析 | mem0-book.myhubs.dev | coolclaws/mem0-book | 49.9k |
-| Chroma 源码解析 | chroma-book.myhubs.dev | coolclaws/chroma-book | 26.6k |
-| Qdrant 源码解析 | qdrant-book.myhubs.dev | coolclaws/qdrant-book | 29.6k |
-| memory-lancedb-pro 源码解析 | memory-lancedb-pro-book.myhubs.dev | coolclaws/memory-lancedb-pro-book | 2.9k |
+| Docling 源码解析 | docling-book.myhubs.dev | coolclaws/docling-book | 56.1k |
+| Marker 源码解析 | marker-book.myhubs.dev | coolclaws/marker-book | 32.9k |
+| Outlines 源码解析 | outlines-book.myhubs.dev | coolclaws/outlines-book | 13.6k |
+| Instructor 源码解析 | instructor-book.myhubs.dev | coolclaws/instructor-book | 12.5k |
 
 ### 推理引擎
 | 书名 | 域名 | Repo | Stars |
 |------|------|------|-------|
+| Ollama 源码解析 | ollama-book.myhubs.dev | coolclaws/ollama-book | 165.6k |
+| llama.cpp 源码解析 | llamacpp-book.myhubs.dev | coolclaws/llamacpp-book | 98k |
 | vLLM 源码解析 | vllm-book.myhubs.dev | coolclaws/vllm-book | 73.2k |
 | SGLang 源码解析 | sglang-book.myhubs.dev | coolclaws/sglang-book | 24.5k |
-| Mini-SGLang 源码解析 | mini-sglang-book.myhubs.dev | coolclaws/mini-sglang-book | 3.7k |
-| TensorRT-LLM 源码解析 | trtllm-book.myhubs.dev | coolclaws/trtllm-book | 13.1k |
-| llama.cpp 源码解析 | llamacpp-book.myhubs.dev | coolclaws/llamacpp-book | 98k |
 | MLX 源码解析 | mlx-book.myhubs.dev | coolclaws/mlx-book | 24.5k |
+| TensorRT-LLM 源码解析 | trtllm-book.myhubs.dev | coolclaws/trtllm-book | 13.1k |
 | MLX-LM 源码解析 | mlx-lm-book.myhubs.dev | coolclaws/mlx-lm-book | 4k |
+| Mini-SGLang 源码解析 | mini-sglang-book.myhubs.dev | coolclaws/mini-sglang-book | 3.7k |
+
+### 语音 / TTS
+| 书名 | 域名 | Repo | Stars |
+|------|------|------|-------|
+| Fish Speech 源码解析 | fish-speech-book.myhubs.dev | coolclaws/fish-speech-book | 27.9k |
+| CosyVoice 源码解析 | cosyvoice-book.myhubs.dev | coolclaws/cosyvoice-book | 20k |
+| LiveKit Agents 源码解析 | livekit-agents-book.myhubs.dev | coolclaws/livekit-agents-book | 9.7k |
+
+### 多模态 / 视觉
+| 书名 | 域名 | Repo | Stars |
+|------|------|------|-------|
+| LLaVA 源码解析 | llava-book.myhubs.dev | coolclaws/llava-book | 24.6k |
+| Janus 源码解析 | janus-book.myhubs.dev | coolclaws/janus-book | 17.7k |
+
+### 训练与微调
+| 书名 | 域名 | Repo | Stars |
+|------|------|------|-------|
+| Transformers 源码解析 | transformers-book.myhubs.dev | coolclaws/transformers-book | 158.1k |
+| LLaMA-Factory 源码解析 | llama-factory-book.myhubs.dev | coolclaws/llama-factory-book | 68.5k |
+| Unsloth 源码解析 | unsloth-book.myhubs.dev | coolclaws/unsloth-book | 54k |
+| verl 源码解析 | verl-book.myhubs.dev | coolclaws/verl-book | 18.9k |
+| TRL 源码解析 | trl-book.myhubs.dev | coolclaws/trl-book | 17.7k |
+
+### 沙箱 / 虚拟化
+| 书名 | 域名 | Repo | Stars |
+|------|------|------|-------|
+| Daytona 源码解析 | daytona-book.myhubs.dev | coolclaws/daytona-book | 67.8k |
+| Firecracker 源码解析 | firecracker-book.myhubs.dev | coolclaws/firecracker-book | 33.1k |
+| gVisor 源码解析 | gvisor-book.myhubs.dev | coolclaws/gvisor-book | 17.9k |
+| E2B 源码解析 | e2b-book.myhubs.dev | coolclaws/e2b-book | 11.4k |
+| OpenShell 源码解析 | openshell-book.myhubs.dev | coolclaws/openshell-book | 2.5k |
+| OpenSandbox 源码解析 | opensandbox-book.myhubs.dev | coolclaws/opensandbox-book | — |
+
+### 协议相关
+| 书名 | 域名 | Repo | Stars |
+|------|------|------|-------|
+| Goose 源码解析 | goose-book.myhubs.dev | coolclaws/goose-book | 33.1k |
+| A2A 协议源码解析 | a2a-book.myhubs.dev | coolclaws/a2a-book | 22.6k |
+| MCP 协议源码解析 | mcp-book.myhubs.dev | coolclaws/mcp-book | 7.5k |
