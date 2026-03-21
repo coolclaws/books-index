@@ -356,6 +356,19 @@ node_modules/
    - 加入新卡片（参考现有格式），同步更新 `STANDARD.md` 十三节书库目录
    - commit & push → coolclaws/books-index
 
+9. **完成 Review 后标记五角星**：
+   - 书籍内容经过人工或 agent 复查扩写（所有章节达标：词数、ASCII 图、设计取舍）后，
+     在 `index.html` 该书卡片的 `card-top` 里加上 Reviewed 标记：
+   ```html
+   <!-- 未 reviewed（原格式） -->
+   <span class="card-tag">标签名</span>
+
+   <!-- Reviewed 后（加五角星） -->
+   <div style="display:flex;align-items:flex-start;gap:5px;"><span class="card-reviewed">★</span><span class="card-tag">标签名</span></div>
+   ```
+   - `card-reviewed` 样式已在页面 CSS 中定义，hover 时显示 "Reviewed" tooltip
+   - 标记条件：所有章节 ≥ 1000 词 + ≥ 3 处设计取舍 + ASCII 流程图 + 无 mermaid
+
 ---
 
 ## 十二、Agent Prompt 模板
